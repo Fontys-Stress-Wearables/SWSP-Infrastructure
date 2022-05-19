@@ -39,6 +39,7 @@ services:
       - "5050:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
+      AzureAd__ClientSecret: $AzureAd__ClientSecret
 
   # Patient service
   patient-postgres:
@@ -138,6 +139,14 @@ services:
     image: ghcr.io/fhict-s6-rb10/feedback-service:main
     ports:
       - "5033:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Staging
+
+# Caregiver Dashboard
+  caregiver-dashboard:
+    image: ghcr.io/fhict-s6-rb10/caregiver-dashboard:main
+    ports:
+      - "5034:3000"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
 
