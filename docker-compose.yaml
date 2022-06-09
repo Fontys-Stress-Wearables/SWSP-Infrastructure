@@ -40,6 +40,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
       AzureAd__ClientSecret: $AzureAd__ClientSecret
+      AzureAd__GraphScope: $AzureAd__GraphScope
+      AzureAd__ClientId: $AzureAd__ClientId
 
   # Patient service
   patient-postgres:
@@ -102,6 +104,7 @@ services:
       - "5053:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
+      tenant: acdb33d3-0c54-4037-804d-768f633cbb6c
 
   # Organization dashboard    
   organization-dashboard:
