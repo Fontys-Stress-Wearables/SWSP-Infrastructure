@@ -29,7 +29,7 @@ services:
       retries: 5
 
   patient-group-service:
-    image: ghcr.io/fhict-s6-rb10/patient-group-service:main
+    image: ghcr.io/fontys-stress-wearables/patient-group-service:main
     depends_on:
       patient-group-postgres:
         condition: service_healthy
@@ -63,7 +63,7 @@ services:
       retries: 5
 
   patient-service:
-    image: ghcr.io/fhict-s6-rb10/patient-service:main
+    image: ghcr.io/fontys-stress-wearables/patient-service:main
     depends_on:
       patient-postgres:
         condition: service_healthy
@@ -94,7 +94,7 @@ services:
       retries: 5
 
   organization-service:
-    image: ghcr.io/fhict-s6-rb10/organization-service:main
+    image: ghcr.io/fontys-stress-wearables/organisation-service:main
     depends_on:
       organization-postgres:
         condition: service_healthy
@@ -108,7 +108,7 @@ services:
 
   # Organization dashboard    
   organization-dashboard:
-    image: ghcr.io/fhict-s6-rb10/organisation-dashboard:main
+    image: ghcr.io/fontys-stress-wearables/organisation-dashboard:main
     depends_on:
       organization-service:
         condition: service_started
@@ -123,7 +123,7 @@ services:
 
   # Stress Data Service
   stress-data-service:
-    image: ghcr.io/fhict-s6-rb10/stress-data-service:main
+    image: ghcr.io/fontys-stress-wearables/stress-data-service:main
     ports:
       - "5031:80"
     environment:
@@ -131,7 +131,7 @@ services:
 
   # Stress Algorithm Service
   stress-algorithm-service:
-    image: ghcr.io/fhict-s6-rb10/stress-algorithm-service:master
+    image: ghcr.io/fontys-stress-wearables/stress-algorithm-service:master
     ports:
       - "5032:80"
     environment:
@@ -139,7 +139,7 @@ services:
 
   # Feedback Service
   feedback-service:
-    image: ghcr.io/fhict-s6-rb10/feedback-service:main
+    image: ghcr.io/fontys-stress-wearables/feedback-service:main
     ports:
       - "5033:80"
     environment:
@@ -147,7 +147,7 @@ services:
 
 # Caregiver Dashboard
   caregiver-dashboard:
-    image: ghcr.io/fhict-s6-rb10/caregiver-dashboard:main
+    image: ghcr.io/fontys-stress-wearables/caregiver-dashboard:mainK
     ports:
       - "5034:3000"
     environment:
