@@ -39,9 +39,9 @@ services:
       - "5050:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
-      AzureAd__ClientSecret: $AzureAd__ClientSecret
-      AzureAd__GraphScope: $AzureAd__GraphScope
-      AzureAd__ClientId: $AzureAd__ClientId
+      AzureAd__ClientSecret: CW18Q~b6-LJetHChYdn2mIQVdjLL2FN1i_hCEc6p
+      AzureAd__GraphScope: api://9c6eb837-6608-43b9-b5cf-6ae74e4dca1d/access_as_caregiver
+      AzureAd__ClientId: 9c6eb837-6608-43b9-b5cf-6ae74e4dca1d
 
   # Patient service
   patient-postgres:
@@ -104,7 +104,7 @@ services:
       - "5053:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
-      tenant: acdb33d3-0c54-4037-804d-768f633cbb6c
+      tenant: 1358d9d3-b805-4ec3-a0ee-cdd35864e8ba
 
   # Organization dashboard    
   organization-dashboard:
@@ -147,7 +147,7 @@ services:
 
 # Caregiver Dashboard
   caregiver-dashboard:
-    image: ghcr.io/fontys-stress-wearables/caregiver-dashboard:mainK
+    image: ghcr.io/fontys-stress-wearables/caregiver-dashboard:main
     ports:
       - "5034:3000"
     environment:
