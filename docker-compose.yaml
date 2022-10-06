@@ -39,9 +39,9 @@ services:
       - "5050:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
-      AzureAd__ClientSecret: CW18Q~b6-LJetHChYdn2mIQVdjLL2FN1i_hCEc6p
-      AzureAd__GraphScope: api://9c6eb837-6608-43b9-b5cf-6ae74e4dca1d/access_as_caregiver
-      AzureAd__ClientId: 9c6eb837-6608-43b9-b5cf-6ae74e4dca1d
+      AzureAd__ClientSecret: ${AZURE_CLIENT_SECRET}
+      AzureAd__GraphScope: ${AZURE_GRAPH_SCOPE}
+      AzureAd__ClientId: ${AZURE_CLIENT_ID}
 
   # Patient service
   patient-postgres:
@@ -104,7 +104,7 @@ services:
       - "5053:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
-      tenant: 1358d9d3-b805-4ec3-a0ee-cdd35864e8ba
+      tenant: ${TENANT_ID}
 
   # Organization dashboard    
   organization-dashboard:
