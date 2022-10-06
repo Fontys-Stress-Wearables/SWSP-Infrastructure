@@ -5,7 +5,7 @@ This repo contains a compose file and the configuration to run all services for 
 ## Requirements
 
 ### Azure AD client secret
-Before you run the services you need to set the Azure AD credentials. These credentials are stored in the `env` file.
+Before you run the services you need to set the Azure AD credentials. These credentials are stored in the `.env` file.
 
 ### Authenticating Docker to access GitHub packages
 Before you can run the docker compose, you will have to authenticate your docker client against GitHub to give it access to the package registry.
