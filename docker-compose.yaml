@@ -145,14 +145,6 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
 
-# Caregiver Dashboard
-  caregiver-dashboard:
-    image: ghcr.io/fontys-stress-wearables/caregiver-dashboard:main
-    ports:
-      - "5034:3000"
-    environment:
-      ASPNETCORE_ENVIRONMENT: Staging
-
 # join swsp
 networks:
   default:
