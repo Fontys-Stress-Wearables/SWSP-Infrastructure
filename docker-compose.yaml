@@ -121,6 +121,12 @@ services:
     ports:
       - "3030:80"
 
+  # Caregiver dashboard    
+  caregiver-dashboard:
+    image: ghcr.io/fontys-stress-wearables/caregiver-dashboard:main
+    ports:
+      - "3000:3000"
+
   # Stress Data Service
   stress-data-service:
     image: ghcr.io/fontys-stress-wearables/stress-data-service:main
