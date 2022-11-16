@@ -143,7 +143,22 @@ services:
       - "5031:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
+    depends_on:
+      - nats
+      - stress-data-influxdb
 
+  # InfluxDb of Stress Data Service
+  stress-data-influxdb:
+    image: influxdb:latest
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=rbAKz20QR4u5J8
+      - DOCKER_INFLUXDB_INIT_ORG=SWSP
+      - DOCKER_INFLUXDB_INIT_BUCKET=StressData
+        
   # Stress Algorithm Service
   stress-algorithm-service:
     image: ghcr.io/fontys-stress-wearables/stress-algorithm-service:master
