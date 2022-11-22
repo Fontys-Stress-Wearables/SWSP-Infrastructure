@@ -151,16 +151,33 @@ services:
       - "5032:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
-
+  
   # Feedback Service
   feedback-service:
+    container_name: feedback-service
     image: ghcr.io/fontys-stress-wearables/feedback-service:main
     ports:
-      - "5033:80"
+      - "5005:80"
+    networks:
+      - default
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
+
+  feedback-db:
+    container_name: feedback-db
+    image: mongo
+    networks:
+      - default
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db
 
 # join swsp
 networks:
   default:
     name: swsp
+
+# Define storage location
+volumes:
+  mongodbdata:
