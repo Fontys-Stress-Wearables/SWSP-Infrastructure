@@ -151,7 +151,7 @@ services:
       - "5032:80"
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
-  
+
   # Feedback Service
   feedback-service:
     container_name: feedback-service
