@@ -188,6 +188,28 @@ services:
     volumes:
       - mongodbdata:/data/db
 
+  # User service
+  user-postgres:
+    image: postgres:14.2
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-test}
+      POSTGRES_DB: "userservice"
+
+  user-service:
+    container_name: user-service
+    image: ghcr.io/fontys-stress-wearables/user-service:main
+    depends_on:
+      - user-postgres
+    ports:
+      - "5054:80"
+    networks:
+      - default
+    environment:
+      ASPNETCORE_ENVIRONMENT: Staging
+
 # join swsp
 networks:
   default:
