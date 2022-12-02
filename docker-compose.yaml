@@ -74,44 +74,42 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
 
-  # Organization service
-  organization-postgres:
-    image: postgres:14.2
-    expose:
-      - "5432"
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-test}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-test}
-      POSTGRES_DB: "organization"
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "pg_isready -U ${POSTGRES_USER:-test} -d organization"
-        ]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+  # # Organization service
+  # organization-postgres:
+  #   image: postgres:14.2
+  #   expose:
+  #     - "5432"
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER:-test}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-test}
+  #     POSTGRES_DB: "organization"
+  #   healthcheck:
+  #     test:
+  #       [
+  #         "CMD-SHELL",
+  #         "pg_isready -U ${POSTGRES_USER:-test} -d organization"
+  #       ]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
 
-  organization-service:
-    image: ghcr.io/fontys-stress-wearables/organisation-service:main
-    depends_on:
-      organization-postgres:
-        condition: service_healthy
-      nats:
-        condition: service_started
-    ports:
-      - "5053:80"
-    environment:
-      ASPNETCORE_ENVIRONMENT: Staging
-      tenant: ${TENANT_ID}
+  # organization-service:
+  #   image: ghcr.io/fontys-stress-wearables/organisation-service:main
+  #   depends_on:
+  #     organization-postgres:
+  #       condition: service_healthy
+  #     nats:
+  #       condition: service_started
+  #   ports:
+  #     - "5053:80"
+  #   environment:
+  #     ASPNETCORE_ENVIRONMENT: Staging
+  #     tenant: ${TENANT_ID}
 
   # Organization dashboard    
   organization-dashboard:
     image: ghcr.io/fontys-stress-wearables/organisation-dashboard:main
     depends_on:
-      organization-service:
-        condition: service_started
       patient-service:
         condition: service_started
       patient-group-service:
@@ -125,8 +123,8 @@ services:
   caregiver-dashboard:
     image: ghcr.io/fontys-stress-wearables/caregiver-dashboard:main
     depends_on:
-      organization-service:
-        condition: service_started
+      # organization-service:
+      #   condition: service_started
       patient-service:
         condition: service_started
       patient-group-service:
