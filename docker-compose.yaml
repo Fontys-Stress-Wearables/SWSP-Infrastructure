@@ -207,6 +207,9 @@ services:
       - default
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
+      AzureAd__ClientSecret: ${AZURE_CLIENT_SECRET}
+      AzureAd__GraphScope: ${AZURE_GRAPH_SCOPE}
+      AzureAd__ClientId: ${AZURE_CLIENT_ID}
 
 # join swsp
 networks:
